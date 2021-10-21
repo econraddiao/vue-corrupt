@@ -1,37 +1,62 @@
-<script setup>
-import Header from './components/Header.vue'
-</script>
-
 <template>
-  
+  <Header/>
+  <Footer/>
 </template>
 
-<style scoped>
-
-</style>
-
-
-
-<!--
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+  import Header from './components/Header.vue'
+  import Footer from './components/Footer.vue'
+  export default {
+    name: 'App',
+    components: {
+      Header,
+      Footer
+    }
+  }
 </script>
-
-<template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />  
-</template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Serif&display=swap');  
+  :root{
+    --color-one: black;
+    --color-two: #EC5829;
+    --color-three: #E5E5E5;
+  }
+  html {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  html * {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  a { 
+    color: var(--color-two);
+  }
+
+  hr {
+    widows: 100%;
+    border-width: 1px;
+    border-style: solid;
+    color: var(--color-three);
+  }
+
+  #app {
+    font-family: 'IBM Plex Serif', serif;
+    margin: 1rem;
+  }
+
 </style>
--->

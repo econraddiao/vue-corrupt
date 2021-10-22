@@ -152,12 +152,15 @@
   h1 {
     font-size: 2rem;
     font-weight: normal;
-    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 435px) {
+      h1 {
+        font-size: 1.65rem;
+      }
   }
 
   p {
     font-size: 1rem;
-    margin-bottom: 1rem;
   }
 
   a { 
@@ -170,7 +173,8 @@
   }
 
   hr {
-    widows: 100%;
+    width: 100%;
+    margin-top: 1rem;
     border-width: 1px;
     border-style: solid;
     color: var(--color-three);

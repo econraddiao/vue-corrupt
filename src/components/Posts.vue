@@ -23,6 +23,6 @@ import Post from './Post.vue'
 
 <style scoped>
 .posts {
-    margin-top: 300px;
+    margin-top: 247px;
 }
 </style>

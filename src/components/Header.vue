@@ -28,22 +28,15 @@
                     checking = true;
                     setTimeout(() => {
                         calc = (lastKnownScrollY - window.scrollY);
-                        console.log("ln: " + lastKnownScrollY + " , actual: " + window.scrollY + ", calc: " + calc);
-
-                        if(calc < -75   ) {
-                            this.isCollapsed = true;
-                        }
-                        if(calc > 100) {
-                            this.isCollapsed = false;
-                        }
+                        //console.log("ln: " + lastKnownScrollY + " , actual: " + window.scrollY + ", calc: " + calc);
                         if (window.scrollY < 100) {
                             this.isCollapsed = false;
+                        } else {
+                            this.isCollapsed = true;
                         }
-                        console.log(this.isCollapsed);
                         lastKnownScrollY = window.scrollY;
                         checking = false;
                     }, 0);
-
                 }
             })
         }
@@ -88,14 +81,24 @@ header {
     top: 0;
     background: white;
     width: calc(100% - 2rem);
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1rem;
+    padding: 1rem;
     cursor: pointer;
+}
+
+h1 {
+    margin-bottom: .5rem;
 }
 
 h1 > span:first-child {
     color: #EC5829;
+}
+
+p {
+    margin: .5rem 0 .5rem;
+}
+
+hr {
+    margin-top: .5rem;
 }
 
 .slider {
@@ -107,6 +110,7 @@ h1 > span:first-child {
 }
 .closed {
 	max-height: 0;
+    margin: 0;
 }
 
 .open {

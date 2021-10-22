@@ -2,12 +2,50 @@
     import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fortawesome/vue-fontawesome'
     import Honorific from './Honorific.vue'
     export default {
-        props: {},
+        name: 'Header',
+        props: {
+            honorifics: Array
+        },
         components: {
             FontAwesomeIcon,
             FontAwesomeLayers,
             FontAwesomeLayersText,
             Honorific
+        },
+        data() {
+            return  {
+                isCollapsed: Boolean,
+                isShow: false
+            }
+        },
+        created() {
+            let checking = false;
+            let lastKnownScrollY = 0;
+            let calc = 0;
+            this.isCollapsed = false;
+            document.addEventListener('scroll', () => {
+                if(!checking) {
+                    checking = true;
+                    setTimeout(() => {
+                        calc = (lastKnownScrollY - window.scrollY);
+                        console.log("ln: " + lastKnownScrollY + " , actual: " + window.scrollY + ", calc: " + calc);
+
+                        if(calc < -75   ) {
+                            this.isCollapsed = true;
+                        }
+                        if(calc > 100) {
+                            this.isCollapsed = false;
+                        }
+                        if (window.scrollY < 100) {
+                            this.isCollapsed = false;
+                        }
+                        console.log(this.isCollapsed);
+                        lastKnownScrollY = window.scrollY;
+                        checking = false;
+                    }, 0);
+
+                }
+            })
         }
     }
 </script>
@@ -15,38 +53,64 @@
 <template>
     <header>
         <h1>
-            <span> ~ hi,</span>
+            <span> ~&nbsp;hi,</span>
             <span> I'm </span>
             <span><a href="#">@econraddiao</a></span>
-            <span>, the </span>
-            <Honorific title=''/>
-            <span>. ~</span>
+            <span>, the&nbsp;</span>
+            <Honorific :honorifics="honorifics"/>
+            <span>.&nbsp;~</span>
         </h1>
-
-        <p>
-            MarOps & Strategy @ <a href="https://www.salesforce.com/">Salesforce</a>.
-            <br>
-            B.S. Architecture @ <a href="https://taubmancollege.umich.edu/">Michigan</a>.
-            <br>
-            <br>
-            Previously @ <a href="https://numie.co/">Numie</a>, <a href="https://poshly.com">Poshly</a>, and <a href="https://qb3.org/">QB3</a>.
-            <br>
-            Find me on 
-            <a href="https://www.linkedin.com/in/conraddiao/"><font-awesome-icon :icon="['fab', 'linkedin']" size="1x" /></a>, 
-            <a href="https://www.instagram.com/conraddiao/"><font-awesome-icon :icon="['fab', 'instagram-square']" size="1x" /></a>, 
-            <a href="https://twitter.com/conraddiao/"><font-awesome-icon :icon="['fab', 'twitter-square']" size="1x" /></a>.
-        </p>
+            <p
+            class="slider"
+             :class="isCollapsed ? 'closed' : 'open'">
+                MarOps & Strategy @ <a href="https://www.salesforce.com/">Salesforce</a>.
+                <br>
+                B.S. Architecture @ <a href="https://taubmancollege.umich.edu/">Michigan</a>.
+                <br>
+                <br>
+                Previously @ <a href="https://numie.co/">Numie</a>, <a href="https://poshly.com">Poshly</a>, and <a href="https://qb3.org/">QB3</a>.
+                <br>
+                Find me on 
+                <a href="https://www.linkedin.com/in/conraddiao/"><font-awesome-icon :icon="['fab', 'linkedin']" size="1x" /></a>, 
+                <a href="https://www.instagram.com/conraddiao/"><font-awesome-icon :icon="['fab', 'instagram-square']" size="1x" /></a>, 
+                <a href="https://twitter.com/conraddiao/"><font-awesome-icon :icon="['fab', 'twitter-square']" size="1x" /></a>.
+            </p>
         <hr>
     </header>
 </template>
 
+
+
+
 <style scoped>
-* {
-    font-family: 'IBM Plex Serif', serif;
+header {
+    position: fixed;
+    top: 0;
+    background: white;
+    width: calc(100% - 2rem);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    cursor: pointer;
 }
 
 h1 > span:first-child {
     color: #EC5829;
+}
+
+.slider {
+	overflow-y: hidden;
+    transition-delay: 0s;
+    transition-duration: 0.25s;
+    transition-property: all;
+    transition-timing-function: ease-out;
+}
+.closed {
+	max-height: 0;
+}
+
+.open {
+    max-height: 127px;
 }
 
 </style>

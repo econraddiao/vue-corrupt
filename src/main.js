@@ -6,6 +6,7 @@ import { faTwitterSquare, faLinkedin, faInstagramSquare } from '@fortawesome/fre
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import shave from 'shave'
 
+
 library.add(faTwitterSquare, faLinkedin, faInstagramSquare)
 
 const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon).provide('shave', shave)

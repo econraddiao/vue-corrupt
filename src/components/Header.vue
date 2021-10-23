@@ -15,7 +15,8 @@
         data() {
             return  {
                 isCollapsed: Boolean,
-                isShow: false
+                isShow: false,
+                headerHeight: Number
             }
         },
         created() {
@@ -82,7 +83,20 @@ header {
     background: white;
     width: calc(100% - 2rem);
     padding: 1rem;
+    padding-bottom: 0;
     cursor: pointer;
+    isolation: isolate;
+    z-index: 11;
+}
+
+header::after {
+    position:absolute;
+    bottom: -.5rem;
+    content: "";
+    height: .5rem;
+    width: 100%;
+    background: linear-gradient(rgba(255, 255, 255, .3), transparent);
+    pointer-events: none;
 }
 
 h1 {

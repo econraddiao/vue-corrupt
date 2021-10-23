@@ -15,7 +15,9 @@
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "clamp-js": "^0.7.0",
     "vue": "^3.2.16",
-    "vue-clamp": "^0.4.0"
+    "vue-carousel": "^0.18.0",
+    "vue-clamp": "^0.4.0",
+    "vue3-carousel": "^0.1.28"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.3",
